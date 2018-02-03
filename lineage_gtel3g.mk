@@ -10,11 +10,14 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from Samsung gtel3g
 $(call inherit-product, device/samsung/gtel3g/device.mk)
 
-PRODUCT_DEVICE := gtel3g
+# Shipping API level
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
+
 PRODUCT_NAME := lineage_gtel3g
+PRODUCT_DEVICE := gtel3g
+PRODUCT_MANUFACTURER := Samsung
 PRODUCT_BRAND := Samsung
 PRODUCT_MODEL := SM-T561
-PRODUCT_MANUFACTURER := Samsung
 PRODUCT_CHARACTERISTICS := tablet
 
 # Stock build fingerprint
