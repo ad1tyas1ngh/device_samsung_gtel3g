@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from scx30g common configs
--include device/samsung/scx30g-common/BoardConfigCommon.mk
+# Inherit from SCX35 common configs
+-include device/samsung/scx35-common/BoardConfigCommon.mk
 
 # Inherit from the proprietary version
 -include vendor/samsung/gtel3g/BoardConfigVendor.mk
@@ -31,6 +31,15 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_LARGE_FILESYSTEM := true
+
+# Recovery
+TARGET_RECOVERY_FSTAB := device/samsung/gtel3g/rootdir/fstab.sc8830
+
+# RIL
+BOARD_RIL_CLASS += ../../../device/samsung/gtel3g/ril
+
+# System properties
+TARGET_SYSTEM_PROP += device/samsung/gtel3g/system.prop
 
 # Camera HAL1 hack
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true

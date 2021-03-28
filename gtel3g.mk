@@ -20,8 +20,11 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # Inherit from vendor tree
 $(call inherit-product-if-exists, vendor/samsung/gtel3g/gtel3g-vendor.mk)
 
-# Inherit from scx30g-common device configuration
-$(call inherit-product, device/samsung/scx30g-common/common.mk)
+# Inherit from scx35-common device configuration
+$(call inherit-product, device/samsung/scx35-common/common.mk)
+
+# Inherit scx30g-common vendor tree
+$(call inherit-product-if-exists, vendor/samsung/scx30g-common/scx30g-common-vendor.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
@@ -49,7 +52,8 @@ PRODUCT_PACKAGES += \
 	init.sc8830.rc \
 	init.sc8830.usb.rc \
 	init.gtel3g_base.rc \
-	ueventd.sc8830.rc
+	ueventd.sc8830.rc \
+        fstab.sc8830
 
 # RIL
 PRODUCT_PACKAGES += \
