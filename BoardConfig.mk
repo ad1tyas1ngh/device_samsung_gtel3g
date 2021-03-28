@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from SCX35 common configs
--include device/samsung/scx35-common/BoardConfigCommon.mk
+# Inherit from SPRD common configs
+-include device/samsung/sprd-common/BoardConfigCommon.mk
 
 # Inherit from the proprietary version
 -include vendor/samsung/gtel3g/BoardConfigVendor.mk
@@ -32,17 +32,36 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 
+# Platform
+TARGET_ARCH := arm
+TARGET_BOARD_PLATFORM := sc8830
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a7
+TARGET_NO_BOOTLOADER := true
+BOARD_VENDOR := samsung
+
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/gtel3g/rootdir/fstab.sc8830
 
 # RIL
 BOARD_RIL_CLASS += ../../../device/samsung/gtel3g/ril
+BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
 # System properties
 TARGET_SYSTEM_PROP += device/samsung/gtel3g/system.prop
 
+# Bluetooth
+USE_BLUETOOTH_BCM4343 := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/gtel3g/bluetooth
+BOARD_CUSTOM_BT_CONFIG := device/samsung/gtel3g/bluetooth/libbt_vndcfg.txt
+
 # Camera HAL1 hack
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+
+# Codecs
+BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
 
 # WiFi
 BOARD_WLAN_DEVICE := bcmdhd
@@ -60,9 +79,21 @@ WIFI_DRIVER_NVRAM_PATH := "/system/etc/wifi/nvram_net.txt"
 WIFI_BAND := 802_11_ABG
 BOARD_HAVE_SAMSUNG_WIFI := true
 
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
+
 # Kernel
 TARGET_KERNEL_CONFIG := gtel3g_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/gtel3g
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/gtel3g/mkbootimg.mk
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_TAGS_OFFSET := 0x01d88000
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000
+BOARD_KERNEL_SEPARATED_DT := true
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin
 
 # Resolution
 TARGET_SCREEN_HEIGHT := 1280
@@ -71,6 +102,42 @@ TARGET_SCREEN_WIDTH := 800
 # Assert
 TARGET_OTA_ASSERT_DEVICE := SM-T561,SM-T560,gtel3g,gtelwifi,gtel3gxx,gtelwifixx
 
+# Bionic
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
+# Build system
+WITHOUT_CHECK_API := true
+
+# Charger
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_NO_CHARGER_LED := true
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
+CHARGING_ENABLED_PATH := /sys/class/power_supply/battery/batt_lp_charging
+BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
+
 # Graphics
 #TARGET_USES_GRALLOC1 := true
 #TARGET_UPDATED_MALI := true
+BOARD_EGL_NEEDS_HANDLE_VALUE := true
+USE_SPRD_DITHER := true
+USE_SPRD_HWCOMPOSER := true
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+
+# GPS
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/gtel3g/include
+
+# healthd
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.sc8830
+
+# Init
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_sec
+
+# Lights
+TARGET_HAS_BACKLIT_KEYS := false
+
+# PowerHAL
+TARGET_POWERHAL_VARIANT := scx35
+
+# SELinux policy
+BOARD_SEPOLICY_DIRS += device/samsung/gtel3g/sepolicy
