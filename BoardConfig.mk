@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from SPRD common configs
--include device/samsung/sprd-common/BoardConfigCommon.mk
-
 # Inherit from the proprietary version
 -include vendor/samsung/gtel3g/BoardConfigVendor.mk
 
@@ -48,6 +45,9 @@ TARGET_RECOVERY_FSTAB := device/samsung/gtel3g/rootdir/fstab.sc8830
 # RIL
 BOARD_RIL_CLASS += ../../../device/samsung/gtel3g/ril
 BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
+BOARD_PROVIDES_RILD := true
+BOARD_PROVIDES_LIBRIL := true
+BOARD_PROVIDES_LIBREFERENCE_RIL := true
 
 # System properties
 TARGET_SYSTEM_PROP += device/samsung/gtel3g/system.prop
@@ -56,6 +56,8 @@ TARGET_SYSTEM_PROP += device/samsung/gtel3g/system.prop
 USE_BLUETOOTH_BCM4343 := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/gtel3g/bluetooth
 BOARD_CUSTOM_BT_CONFIG := device/samsung/gtel3g/bluetooth/libbt_vndcfg.txt
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera HAL1 hack
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
@@ -99,14 +101,24 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 800
 
+# SPRD hardware
+BOARD_USES_SPRD_HARDWARE := true
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := SM-T561,SM-T560,gtel3g,gtelwifi,gtel3gxx,gtelwifixx
+
+# Audio
+BOARD_USES_TINYALSA_AUDIO := true
+TARGET_TINY_ALSA_IGNORE_SILENCE_SIZE := true
 
 # Bionic
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # Build system
 WITHOUT_CHECK_API := true
+
+# CMHW
+BOARD_HARDWARE_CLASS := device/samsung/gtel3g/cmhw/
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -122,6 +134,7 @@ BOARD_EGL_NEEDS_HANDLE_VALUE := true
 USE_SPRD_DITHER := true
 USE_SPRD_HWCOMPOSER := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+USE_OPENGL_RENDERER := true
 
 # GPS
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/gtel3g/include
