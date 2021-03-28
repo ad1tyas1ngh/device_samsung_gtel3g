@@ -23,9 +23,6 @@ $(call inherit-product-if-exists, vendor/samsung/gtel3g/gtel3g-vendor.mk)
 # Inherit from AOSP product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from sprd-common device configuration
-$(call inherit-product, device/samsung/sprd-common/common.mk)
-
 # Inherit scx30g-common vendor tree
 $(call inherit-product-if-exists, vendor/samsung/scx30g-common/scx30g-common-vendor.mk)
 
@@ -38,7 +35,11 @@ PRODUCT_PACKAGES += \
 	codec_pga.xml \
 	tiny_hw.xml \
 	audio.primary.sc8830 \
-	libaudio-resampler
+	libaudio-resampler \
+        audio.a2dp.default \
+	audio.usb.default \
+	audio.r_submix.default \
+	libtinyalsa
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -183,7 +184,10 @@ PRODUCT_PACKAGES += \
 	macloader \
 	wpa_supplicant.conf \
 	wpa_supplicant_overlay.conf \
-	p2p_supplicant_overlay.conf
+	p2p_supplicant_overlay.conf \
+        dhcpcd.conf \
+	wpa_supplicant \
+	hostapd
 
 # Disable mobile data on first boot
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -219,6 +223,58 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Dalvik heap config
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
 
+# Device props
+PRODUCT_PROPERTY_OVERRIDES := \
+	keyguard.no_require_sim=true \
+	ro.com.android.dataroaming=false
+
+# Compat
+PRODUCT_PACKAGES += \
+    	libstlport
+
+# Set default USB interface
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	persist.sys.usb.config=mtp
+
+# Charger
+PRODUCT_PACKAGES += \
+	charger \
+	charger_res_images
+
+# Permissions
+PERMISSION_XML_FILES := \
+	frameworks/native/data/etc/handheld_core_hardware.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth_le.xml \
+	frameworks/native/data/etc/android.hardware.telephony.gsm.xml \
+	frameworks/native/data/etc/android.hardware.location.xml \
+	frameworks/native/data/etc/android.hardware.location.gps.xml \
+	frameworks/native/data/etc/android.hardware.wifi.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml \
+	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.xml \
+	frameworks/native/data/etc/android.software.sip.xml \
+	frameworks/native/data/etc/android.software.sip.voip.xml \
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml \
+
+PRODUCT_COPY_FILES += \
+	$(foreach f,$(PERMISSION_XML_FILES),$(f):system/etc/permissions/$(notdir $(f)))
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+	f2fstat \
+	fibmap.f2fs \
+	fsck.f2fs \
+	mkfs.f2fs \
+	setup_fs \
+
+# Misc packages
+PRODUCT_PACKAGES += \
+	com.android.future.usb.accessory \
+
+# Samsung Service Mode
+PRODUCT_PACKAGES += \
+	SamsungServiceMode
 
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \
