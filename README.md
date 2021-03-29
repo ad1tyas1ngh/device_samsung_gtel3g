@@ -1,6 +1,10 @@
-##Device configuration for Samsung Galaxy Tab E 9.6 SPRD SM-T561 (gtel3g)
+Device Tree for Samsung Galaxy Tab E 9.6 SM-T561 (gtel3g)
+===========================================
 
-=====================================
+The Samsung Galaxy Tab E 9.6 (codenamed _"SM-T561"_) is a mid-range tablet from Samsung.
+It was announced in June 2015
+
+## Device specifications
 
 Basic   | Spec Sheet
 -------:|:-------------------------
@@ -16,4 +20,5 @@ Dimensions | 241.9 x 149.5 x 8.5 mm
 Display | 800 x 1280 pixels, 9.6"
 Rear Camera  | 5.0 MP
 Front Camera | 2.0 MP
-Release Date | June 2015
+
+![Samsung Galaxy Tab E 9.6](https://images-na.ssl-images-amazon.com/images/I/410RNkPt2XL._AC_SY700_FMwebp_.jpg "Samsung Galaxy Tab E 9.6")
