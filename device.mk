@@ -14,17 +14,17 @@
 
 LOCAL_PATH := device/samsung/gtel3g
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
 # Inherit from vendor tree
 $(call inherit-product-if-exists, vendor/samsung/gtel3g/gtel3g-vendor.mk)
 
-# Inherit from AOSP product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
 # Inherit scx30g-common vendor tree
 $(call inherit-product-if-exists, vendor/samsung/scx30g-common/scx30g-common-vendor.mk)
+
+# setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -220,9 +220,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.google.locationfeatures=1 \
 	ro.com.google.networklocation=1
 
-# Dalvik heap config
-$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
-
 # Device props
 PRODUCT_PROPERTY_OVERRIDES := \
 	keyguard.no_require_sim=true \
@@ -283,12 +280,3 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.debuggable=1 \
 	persist.sys.root_access=1 \
 	persist.service.adb.enable=1
-
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Set those variables here to overwrite the inherited values.
-PRODUCT_NAME := full_gtel3g
-PRODUCT_DEVICE := gtel3g
-PRODUCT_BRAND := samsung
-PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := SM-T561
