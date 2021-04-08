@@ -28,18 +28,20 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Audio
 PRODUCT_PACKAGES += \
-	audio_hw.xml \
-	audio_para \
-	audio_effects_vendor.conf \
-	audio_policy.conf \
-	codec_pga.xml \
-	tiny_hw.xml \
 	audio.primary.sc8830 \
 	libaudio-resampler \
         audio.a2dp.default \
 	audio.usb.default \
 	audio.r_submix.default \
 	libtinyalsa
+
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/configs/audio/audio_effects_vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_vendor.conf \
+        $(LOCAL_PATH)/configs/audio/audio_hw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_hw.xml \
+        $(LOCAL_PATH)/configs/audio/audio_para:$(TARGET_COPY_OUT_VENDOR)/etc/audio_para \
+        $(LOCAL_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
+        $(LOCAL_PATH)/configs/audio/codec_pga.xml:$(TARGET_COPY_OUT_VENDOR)/etc/codec_pga.xml \
+        $(LOCAL_PATH)/configs/audio/tiny_hw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/tiny_hw.xml
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -59,16 +61,14 @@ PRODUCT_PACKAGES += \
 	libstagefright_sprd_mp3dec
 
 # Media config
-PRODUCT_PACKAGES += \
-	media_codecs.xml
-
 MEDIA_XML_CONFIGS := \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml
 
 PRODUCT_COPY_FILES += \
-	$(foreach f,$(MEDIA_XML_CONFIGS),$(f):system/etc/$(notdir $(f)))
+	$(foreach f,$(MEDIA_XML_CONFIGS),$(f):system/etc/$(notdir $(f))) \
+        $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
 
 # Common libs
 PRODUCT_PACKAGES += \
@@ -80,9 +80,11 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
 	libgpspc \
-	libefuse \
-	gps.conf \
-	gps.xml
+	libefuse
+
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
+        $(LOCAL_PATH)/configs/gps/gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/gps.xml
 
 # HWC
 PRODUCT_PACKAGES += \
@@ -177,17 +179,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.product.locale.region=GB
 
 # WiFi
-$(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
-
-# WiFi
 PRODUCT_PACKAGES += \
 	macloader \
 	wpa_supplicant.conf \
-	wpa_supplicant_overlay.conf \
-	p2p_supplicant_overlay.conf \
         dhcpcd.conf \
 	wpa_supplicant \
 	hostapd
+
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/p2p_supplicant_overlay.conf \
+        $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wpa_supplicant_overlay.conf
 
 # Disable mobile data on first boot
 PRODUCT_PROPERTY_OVERRIDES += \
