@@ -52,7 +52,7 @@ PRODUCT_COPY_FILES+= \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.midi.xml
-    
+
 # ART device props
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-flags=--no-watch-dog
@@ -94,7 +94,7 @@ PRODUCT_PACKAGES += \
     libstagefright_sprd_vpxdec \
     libstagefright_sprd_aacdec \
     libstagefright_sprd_mp3dec
-   
+
 # Common libs
 PRODUCT_PACKAGES += \
     librilutils \
@@ -169,15 +169,13 @@ PRODUCT_PACKAGES += \
     lights.sc8830
 
 # Media
-PRODUCT_PACKAGES += \
-    media_profiles_V1_0.xml
-
 PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/media/mediaserver.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/mediaserver.rc
+    $(LOCAL_PATH)/media/mediaserver.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/mediaserver.rc \
+    $(LOCAL_PATH)/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_profiles_V1_0.xml
 
 # Media config
 PRODUCT_COPY_FILES += \
