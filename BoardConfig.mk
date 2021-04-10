@@ -120,8 +120,8 @@ TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 # Build system
 WITHOUT_CHECK_API := true
 
-# CMHW
-BOARD_HARDWARE_CLASS := device/samsung/gtel3g/cmhw/
+# LineageHW
+BOARD_HARDWARE_CLASS := device/samsung/gtel3g/lineagehw/
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
