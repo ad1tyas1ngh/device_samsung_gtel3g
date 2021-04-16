@@ -20,6 +20,8 @@ PRODUCT_BRAND := Samsung
 PRODUCT_MODEL := SM-T561
 PRODUCT_CHARACTERISTICS := tablet
 
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+
 # Stock build fingerprint
 BUILD_FINGERPRINT := "samsung/gtel3gxx/gtel3g:4.4.4/KTU84P/T561XXU0AQA2:user/release-keys"
 PRIVATE_BUILD_DESC := "gtel3gxx-user 4.4.4 KTU84P T561XXU0AQA2 release-keys"
