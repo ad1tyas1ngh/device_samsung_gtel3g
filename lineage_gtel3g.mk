@@ -1,9 +1,6 @@
 # Inherit some common AOSP stuff
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Release name
-PRODUCT_RELEASE_NAME := gtel3g
-
 # Inherit some common Lineage stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
