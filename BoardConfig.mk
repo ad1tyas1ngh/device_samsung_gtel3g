@@ -41,7 +41,7 @@ TARGET_NO_BOOTLOADER := true
 BOARD_VENDOR := samsung
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/samsung/gtel3g/rootdir/fstab.sc8830
+TARGET_RECOVERY_FSTAB := device/samsung/gtel3g/rootdir/etc/fstab.sc8830
 
 # RIL
 BOARD_RIL_CLASS += ../../../device/samsung/gtel3g/ril
