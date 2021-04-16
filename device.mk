@@ -1,4 +1,5 @@
-# Copyright (C) 2017 The Lineage Project
+#
+# Copyright (C) 2021 The Lineage Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
