@@ -18,9 +18,6 @@ LOCAL_PATH := device/samsung/gtel3g
 # Inherit from vendor tree
 $(call inherit-product-if-exists, vendor/samsung/gtel3g/gtel3g-vendor.mk)
 
-# Inherit scx30g-common vendor tree
-$(call inherit-product-if-exists, vendor/samsung/scx30g-common/scx30g-common-vendor.mk)
-
 # setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
 
