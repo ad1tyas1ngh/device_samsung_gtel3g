@@ -82,9 +82,6 @@ WIFI_DRIVER_NVRAM_PATH := "/system/etc/wifi/nvram_net.txt"
 WIFI_BAND := 802_11_ABG
 BOARD_HAVE_SAMSUNG_WIFI := true
 
-# Include an expanded selection of fonts
-EXTENDED_FONT_FOOTPRINT := true
-
 # Kernel
 TARGET_KERNEL_CONFIG := gtel3g_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/gtel3g
