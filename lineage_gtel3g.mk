@@ -35,9 +35,8 @@ PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 
-# Stock build fingerprint
-BUILD_FINGERPRINT := "samsung/gtel3gxx/gtel3g:4.4.4/KTU84P/T561XXU0AQA2:user/release-keys"
-PRIVATE_BUILD_DESC := "gtel3gxx-user 4.4.4 KTU84P T561XXU0AQA2 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME="gtel3g" \
+    PRIVATE_BUILD_DESC="gtel3gxx-user 4.4.4 KTU84P T561XXU0AQA2 release-keys"
 
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.build.fingerprint=$(BUILD_FINGERPRINT)
+BUILD_FINGERPRINT := "samsung/gtel3gxx/gtel3g:4.4.4/KTU84P/T561XXU0AQA2:user/release-keys"
