@@ -141,10 +141,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/gtel3g/include
 # healthd
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.sc8830
 
-# Init
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_sec
-
 # Lights
 TARGET_HAS_BACKLIT_KEYS := false
 
