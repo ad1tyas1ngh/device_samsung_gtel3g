@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := device/samsung/gtel3g
-
 # Inherit from vendor tree
 $(call inherit-product-if-exists, vendor/samsung/gtel3g/gtel3g-vendor.mk)
 
