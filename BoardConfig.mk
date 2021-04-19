@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+DEVICE_PATH := device/samsung/gtel3g
+
 # Inherit from the proprietary version
 -include vendor/samsung/gtel3g/BoardConfigVendor.mk
 
@@ -41,22 +43,22 @@ TARGET_NO_BOOTLOADER := true
 BOARD_VENDOR := samsung
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/samsung/gtel3g/rootdir/etc/fstab.sc8830
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.sc8830
 
 # RIL
-BOARD_RIL_CLASS += ../../../device/samsung/gtel3g/ril
+BOARD_RIL_CLASS += ../../../$(DEVICE_PATH)/ril
 BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 BOARD_PROVIDES_RILD := true
 BOARD_PROVIDES_LIBRIL := true
 BOARD_PROVIDES_LIBREFERENCE_RIL := true
 
 # System properties
-TARGET_SYSTEM_PROP += device/samsung/gtel3g/system.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Bluetooth
 USE_BLUETOOTH_BCM4343 := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/gtel3g/bluetooth
-BOARD_CUSTOM_BT_CONFIG := device/samsung/gtel3g/bluetooth/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+BOARD_CUSTOM_BT_CONFIG := $(DEVICE_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
@@ -85,7 +87,7 @@ BOARD_HAVE_SAMSUNG_WIFI := true
 # Kernel
 TARGET_KERNEL_CONFIG := gtel3g_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/gtel3g
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/gtel3g/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x01d88000
@@ -117,7 +119,7 @@ TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 WITHOUT_CHECK_API := true
 
 # LineageHW
-BOARD_HARDWARE_CLASS := device/samsung/gtel3g/lineagehw/
+BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/lineagehw/
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -136,7 +138,7 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 USE_OPENGL_RENDERER := true
 
 # GPS
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/gtel3g/include
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # healthd
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.sc8830
@@ -148,4 +150,4 @@ TARGET_HAS_BACKLIT_KEYS := false
 TARGET_POWERHAL_VARIANT := scx35
 
 # SELinux policy
-BOARD_SEPOLICY_DIRS += device/samsung/gtel3g/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
