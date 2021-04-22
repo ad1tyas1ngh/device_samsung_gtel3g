@@ -21,7 +21,8 @@ $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
