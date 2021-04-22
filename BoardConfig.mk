@@ -143,8 +143,5 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.sc8830
 # Lights
 TARGET_HAS_BACKLIT_KEYS := false
 
-# PowerHAL
-TARGET_POWERHAL_VARIANT := scx35
-
 # SELinux policy
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
