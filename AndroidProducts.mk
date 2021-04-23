@@ -20,7 +20,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/lineage_gtel3g.mk
+	$(LOCAL_DIR)/lineage.mk
 
 COMMON_LUNCH_CHOICES := \
     lineage_gtel3g-user \
