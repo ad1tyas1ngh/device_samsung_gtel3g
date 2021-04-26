@@ -141,7 +141,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/sec_touchscreen.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sec_touchscreen.kl \
     $(LOCAL_PATH)/keylayout/samsung-keypad.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/samsung-keypad.kl \
-    $(LOCAL_PATH)/keylayout/sci-keypad.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sci-keypad.kl
+    $(LOCAL_PATH)/keylayout/sci-keypad.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sci-keypad.kl \
+    $(LOCAL_PATH)/keylayout/Generic.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Generic.kl
 
 # Lights
 PRODUCT_PACKAGES += \
