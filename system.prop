@@ -1,24 +1,52 @@
-ro.sf.lcd_density=210
-ro.sf.lcd_width=154
-ro.sf.lcd_height=90
-ro.opengles.version=131072
-ro.product.hardware=PIKEAYOUNG2DTV_V1.0.0
-
-debug.hwui.render_dirty_regions=false
-
 # ART
 dalvik.vm.dex2oat-flags=--no-watch-dog
 
 # Bluetooth OPP low speed for save power
 debug.bt.lowspeed=true
 
-persist.ttydev=ttyVUART0
-
 # Camera config
 camera.disable_zsl_mode=1
 
+# Default Density config
+ro.sf.lcd_density=210
+ro.sf.lcd_width=154
+ro.sf.lcd_height=90
+ro.product.hardware=PIKEAYOUNG2DTV_V1.0.0
+
 # delay for ConnectivityChange broadcast (ms)
 conn.connectivity_change_delay = 0
+
+# Disable dirty region for Mali
+debug.hwui.render_dirty_regions=false
+
+# EGL blobs crash on screen off
+ro.egl.destroy_after_detach=true
+
+# KSM and ZRAM configs
+ro.config.ksm.support=true
+ro.config.zram.support=true
+
+# Media
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
+
+# Modem Prop
+persist.sys.engpc.disable=0
+
+# Multitasking
+ro.config.swappiness=130
+ro.config.zram.compressor=lz4
+ro.config.zram.disksize=512M
+
+# Multi-user UI
+fw.max_users=3
+fw.show_multiuserui=1
+
+# NK console device
+persist.ttydev=ttyVUART0
+
+# OpenGLES version
+ro.opengles.version=131072
 
 # Performance
 sys.use_fifo_ui=1
@@ -26,6 +54,12 @@ sys.use_fifo_ui=1
 # RIL
 persist.modem.w.enable=1
 persist.modem.w.nvp=w
+persist.msms.phone_count=1
+persist.msms.phone_default=0
+persist.msmslt=0
+persist.sys.modem.diag=,gser
+persist.sys.sprd.modemreset=0
+persist.sys.sprd.wcnreset=1
 ro.modem.w.dev=/proc/cpw
 ro.modem.w.tty=/dev/stty_w
 ro.modem.w.eth=rmnet
@@ -38,19 +72,25 @@ ro.modem.w.vbc=/dev/spipe_w6
 ro.modem.w.id=0
 ro.modem.w.fixnv_size=0x40000
 ro.modem.w.runnv_size=0x60000
+ro.modem.wcn.enable=1
+ro.modem.wcn.dev=/dev/cpwcn
+ro.modem.wcn.tty=/deiv/stty_wcn
+ro.modem.wcn.diag=/dev/slog_wcn
+ro.modem.wcn.assert=/dev/spipe_wcn2
+ro.modem.wcn.id=1
+ro.modem.wcn.count=1
+ro.com.android.dataroaming=false
+ro.msms.phone_count=1
+ro.modem.w.count=1
+ro.ril.hsxpa=0
+ro.ril.gprsclass=10
+ro.telephony.ril_class=SC7730SRIL
+ro.telephony.ril.config=setPrefNwTypeOnUnsolConnected,sim2gsmonly
+ro.telephony.ril.socket_name=rild,rild1,rild2
+ro.ril.telephony.mqanelements=6
+sys.usb.gser.count=4
 
-persist.sys.engpc.disable=0
-
-ro.config.ksm.support=true
-
-#zram config
-ro.config.zram.support=true
-
-# Media
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
-
-# System property for storage_preload
+# Support Preload install apks
 persist.sys.storage_preload=1
 
 # this product does not support bt and softap coexist
@@ -61,42 +101,3 @@ config.disable_atlas=true
 
 # System prop for DisplayInfo cache
 config.displayinfo.use_cache=true
-
-# RIL
-ro.modem.wcn.enable=1
-ro.modem.wcn.dev=/dev/cpwcn
-ro.modem.wcn.tty=/deiv/stty_wcn
-ro.modem.wcn.diag=/dev/slog_wcn
-ro.modem.wcn.assert=/dev/spipe_wcn2
-ro.modem.wcn.id=1
-ro.modem.wcn.count=1
-persist.sys.sprd.modemreset=0
-persist.sys.sprd.wcnreset=1
-ro.com.android.dataroaming=false
-ro.msms.phone_count=1
-persist.msms.phone_count=1
-persist.msms.phone_default=0
-persist.msmslt=0
-ro.modem.w.count=1
-persist.sys.modem.diag=,gser
-sys.usb.gser.count=4
-ro.ril.hsxpa=0
-ro.ril.gprsclass=10
-ro.telephony.ril_class=SC7730SRIL
-ro.telephony.ril.config=setPrefNwTypeOnUnsolConnected,sim2gsmonly
-ro.telephony.ril.socket_name=rild,rild1,rild2
-ro.ril.telephony.mqanelements=6
-persist.sys.sprd.modemreset=0
-persist.sys.sprd.wcnreset=1
-
-# Multitasking
-ro.config.swappiness=130
-ro.config.zram.compressor=lz4
-ro.config.zram.disksize=512M
-
-# Multi-user UI
-fw.max_users=3
-fw.show_multiuserui=1
-
-# EGL blobs crash on screen off
-ro.egl.destroy_after_detach=true
