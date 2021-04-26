@@ -50,10 +50,6 @@ PRODUCT_COPY_FILES+= \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.midi.xml
 
-# ART device props
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-flags=--no-watch-dog
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.primary.sc8830 \
@@ -76,10 +72,6 @@ PRODUCT_PACKAGES += \
     libbluetooth_jni \
     bluetooth.default
 
-# Camera config
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera.disable_zsl_mode=1
-
 # Codecs
 PRODUCT_PACKAGES += \
     libcolorformat_switcher \
@@ -97,16 +89,6 @@ PRODUCT_PACKAGES += \
     librilutils \
     libril_shim \
     libgps_shim
-
-# Device props
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.com.android.dataroaming=false
-
-# enable Google-specific location features,
-# like NetworkLocationProvider and LocationCollector
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.locationfeatures=1 \
-    ro.com.google.networklocation=1
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -166,17 +148,10 @@ PRODUCT_PACKAGES += \
     lights.sc8830
 
 # Media
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/mediaserver.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/mediaserver.rc \
     $(LOCAL_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_profiles_V1_0.xml \
-    $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs.xml
-
-# Media config
-PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video_le.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_telephony.xml
@@ -186,10 +161,6 @@ PRODUCT_PACKAGES += \
     SamsungDoze \
     Jelly \
     Snap
-
-# Performance
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.use_fifo_ui=1
 
 # PowerHAL
 PRODUCT_PACKAGES += \
@@ -212,10 +183,6 @@ PRODUCT_PACKAGES += \
 # Samsung Service Mode
 PRODUCT_PACKAGES += \
     SamsungServiceMode
-
-# sdcardfs
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.sdcardfs=true
 
 # WiFi
 PRODUCT_PACKAGES += \
